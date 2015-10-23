@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin name="contact_us">
+	<title>Contact Us</title>
+	<summary>This plugin makes users able to contact site administrator using a special form.</summary>
+	<author>Intelliants LLC</author>
+	<contributor>Intelliants LLC</contributor>
+	<version>3.4.0</version>
+	<date>2015-09-01</date>
+	<compatibility>3.4</compatibility>
+
+	<pages>
+		<page menus="bottom" url="contacts/" name="contact_us" readonly="0">Contact Us</page>
+	</pages>
+
+	<configgroup name="contact_us">Contact Us</configgroup>
+	<config group="contact_us" name="contact_us_plugin" type="divider" value="General">General</config>
+	<config group="contact_us" name="contact_notif" values="No,Email" type="select" description="Notification type">Email</config>
+	<config group="contact_us" name="contact_us_email" type="text" description="Email address" show="contact_notif|Email"><![CDATA[]]></config>
+	<config group="contact_us" name="contact_us_subjects" type="textarea" description="List of subjects"><![CDATA[]]></config>
+
+	<phrases>
+		<phrase category="common" key="contact_us">Contact Us</phrase>
+
+		<phrase category="frontend" key="contact_body_len">Body length must be :num chars.</phrase>
+		<phrase category="frontend" key="contact_request_from">Contact request from </phrase>
+		<phrase category="frontend" key="contact_reason">Contact Reason</phrase>
+		<phrase category="frontend" key="contact_top_text"><![CDATA[<p>To edit this text go to:</p> <p><b>Admin Dashboard → System  → Languages → Edit phrases</b></p> <p>and search by key: <i>contact_top_text</i>.</p>]]></phrase>
+		<phrase category="frontend" key="message_sent">Message sent.</phrase>
+		<phrase category="frontend" key="phone">Phone</phrase>
+
+		<phrase category="tooltip" key="contact_us_subjects">Start every subject with a new line. Subject should be represented by a phrase key existed in your language pack. If any phrase does not exist in the pack the input will be displayed as it is.</phrase>
+	</phrases>
+
+	<install>
+		<sql>
+			<![CDATA[
+CREATE TABLE `{prefix}contacts` (
+	`id` mediumint(8) unsigned NOT NULL auto_increment,
+	`fullname` varchar(50) NOT NULL,
+	`email` varchar(100) NOT NULL,
+	`subject` varchar(255) NOT NULL,
+	`phone` varchar(100) NOT NULL,
+	`body` text NOT NULL,
+	`date` datetime NOT NULL,
+	`ip` bigint(12) NOT NULL,
+	PRIMARY KEY (`id`)
+) {mysql_version};
+			]]>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+			<![CDATA[
+DROP TABLE IF EXISTS `{prefix}contacts`;
+			]]>
+		</sql>>
+	</uninstall>
+</plugin>

@@ -1,0 +1,107 @@
+<?php
+//##copyright##
+
+if (iaView::REQUEST_HTML == $iaView->getRequestType())
+{
+	$subjects = $iaCore->get('contact_us_subjects');
+
+	if ($subjects)
+	{
+		$subjects = explode(PHP_EOL, $subjects);
+
+		foreach ($subjects as $key => $subject)
+		{
+			$subjects[$key] = trim($subject);
+		}
+	}
+
+	if (isset($_POST['msg']))
+	{
+		$error = false;
+		$messages = array();
+
+		// min and max message length
+		$len = array('min' => 10, 'max' => 500);
+
+		iaUtil::loadUTF8Functions('ascii', 'validation', 'bad', 'utf8_to_ascii');
+
+		// default email address to send contact requests to
+		$email_to_send = $iaCore->get('site_email');
+
+		$data = array();
+		$data['fullname'] = iaSanitize::html($_POST['name']);
+		$data['email'] = iaUtil::checkPostParam('email');
+		$data['phone'] = iaUtil::checkPostParam('phone');
+		$data['subject'] = isset($_POST['subject']) && $_POST['subject'] ? $_POST['subject'] : iaLanguage::get('contact_request_from') . ' ' . $iaCore->get('site');
+		$data['body'] = preg_replace('[\r\n]', '', nl2br(iaSanitize::html($_POST['msg'])));
+		$data['ip'] = iaUtil::getIp();
+		$body_len = utf8_strlen($data['body']);
+
+		if (empty($data['email']))
+		{
+			$error = true;
+			$messages[] = iaLanguage::getf('field_is_empty', array('field' => iaLanguage::get('email')));
+		}
+		elseif (!iaValidate::isEmail($data['email']))
+		{
+			$error = true;
+			$messages[] = iaLanguage::get('error_email_incorrect');
+		}
+
+		if (!$data['fullname'])
+		{
+			$error = true;
+			$messages[] = iaLanguage::getf('field_is_empty', array('field' => iaLanguage::get('fullname')));
+		}
+
+		if ($len['min'] > $body_len || $len['max'] < $body_len)
+		{
+			$error = true;
+			$messages[] = iaLanguage::getf('contact_body_len', array('num' => $len['min'] . '-' . $len['max']));
+		}
+
+		if (!iaUsers::hasIdentity() && !iaValidate::isCaptchaValid())
+		{
+			$error = true;
+			$messages[] = iaLanguage::get('confirmation_code_incorrect');
+		}
+
+		if (!$error)
+		{
+			$data = array_map( array('iaSanitize', 'sql'), $data);
+			$iaDb->insert($data, array('date' => iaDb::FUNCTION_NOW), 'contacts');
+
+			if ('Email' == $iaCore->get('contact_notif'))
+			{
+				$iaMailer = $iaCore->factory('mailer');
+
+				// validate config email address
+				if (iaValidate::isEmail($iaCore->get('contact_us_email')))
+				{
+					$email_to_send = $iaCore->get('contact_us_email');
+				}
+
+				$data['body'] .= '<br><br>' . $data['fullname'] . '<br>'
+					. $data['email'] . '<br>'
+					. $data['phone'];
+
+				$iaMailer->AddAddress($email_to_send);
+
+				$iaMailer->From = $data['email'];
+				$iaMailer->FromName = $data['fullname'];
+				$iaMailer->Subject = $data['subject'];
+				$iaMailer->Body = $data['body'];
+
+				$iaMailer->Send();
+			}
+
+			$messages = array(iaLanguage::get('message_sent'));
+		}
+
+		$iaView->setMessages($messages, $error ? iaView::ERROR : iaView::SUCCESS);
+	}
+
+	$iaView->assign('subjects', $subjects);
+
+	$iaView->display();
+}
