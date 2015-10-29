@@ -4,9 +4,9 @@
 	<summary>This plugin makes users able to contact site administrator using a special form.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>3.4.0</version>
-	<date>2015-09-01</date>
-	<compatibility>3.4</compatibility>
+	<version>4.0.0</version>
+	<date>2015-10-29</date>
+	<compatibility>4.0</compatibility>
 
 	<pages>
 		<page menus="bottom" url="contacts/" name="contact_us" readonly="0">Contact Us</page>
@@ -18,17 +18,55 @@
 	<config group="contact_us" name="contact_us_email" type="text" description="Email address" show="contact_notif|Email"><![CDATA[]]></config>
 	<config group="contact_us" name="contact_us_subjects" type="textarea" description="List of subjects"><![CDATA[]]></config>
 
+	<config group="contact_us" name="contact_us_map" type="divider" value="Google map">Google map</config>
+	<config group="contact_us"
+		    name="contact_us_show_map" 
+		    type="radio"
+		    values="1,0" 
+		    description="Show map">1</config>
+	<config group="contact_us"
+		    name="contact_us_lat"
+		    type="text" 
+		    show="contact_us_show_map|1" 
+		    description="Latitude">40.6770394</config>
+	<config group="contact_us"
+		    name="contact_us_lng"
+		    type="text" 
+		    show="contact_us_show_map|1" 
+		    description="Longitude">-73.9466995</config>
+	<config group="contact_us"
+		    name="contact_us_zoom"
+		    type="text" 
+		    show="contact_us_show_map|1" 
+		    description="Map zoom">15</config>
+
 	<phrases>
 		<phrase category="common" key="contact_us">Contact Us</phrase>
 
 		<phrase category="frontend" key="contact_body_len">Body length must be :num chars.</phrase>
 		<phrase category="frontend" key="contact_request_from">Contact request from </phrase>
 		<phrase category="frontend" key="contact_reason">Contact Reason</phrase>
-		<phrase category="frontend" key="contact_top_text"><![CDATA[<p>To edit this text go to:</p> <p><b>Admin Dashboard → System  → Languages → Edit phrases</b></p> <p>and search by key: <i>contact_top_text</i>.</p>]]></phrase>
-		<phrase category="frontend" key="message_sent">Message sent.</phrase>
+		<phrase category="frontend" key="contact_top_text">
+			<![CDATA[
+<p>To edit this text go to:</p> <p><b>Admin Dashboard → System  → Languages → Edit phrases</b></p> <p>and search by key: <i>contact_top_text</i>.</p>
+			]]>
+		</phrase>
+		<phrase category="frontend" key="contact_us_address">
+			<![CDATA[
+<p>To change address, go to:</p> <p><b>Admin Dashboard → System  → Languages → Edit phrases</b></p> <p>and search by key: <i>contact_us_address</i>.</p>
+<p>
+<b>Company Title</b><br>
+3 Park Ave, New York,<br>
+NY 10016, United States<br>
++1 212-725-9469
+</p>
+			]]>
+		</phrase>
+		<phrase category="frontend" key="message_sent">Message sent. Thank you!</phrase>
 		<phrase category="frontend" key="phone">Phone</phrase>
 
 		<phrase category="tooltip" key="contact_us_subjects">Start every subject with a new line. Subject should be represented by a phrase key existed in your language pack. If any phrase does not exist in the pack the input will be displayed as it is.</phrase>
+
 	</phrases>
 
 	<install>

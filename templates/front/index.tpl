@@ -1,3 +1,37 @@
+{if $core.config.contact_us_show_map}
+	<div class="row">
+		<div class="col-md-6">
+			<div class="contact-us-address">
+				{lang key='contact_us_address'}
+			</div>
+
+			<div class="contact-us-map" id="contact-us-map" style="height:350px;"></div>
+
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+			{ia_add_js}
+google.maps.event.addDomListener(window, 'load', init);
+
+function init() {
+	var myLatLng = {
+		lat: {$core.config.contact_us_lat},
+		lng: {$core.config.contact_us_lng}
+	},
+	mapOptions = {
+		zoom: {$core.config.contact_us_zoom|default:14},
+		center: new google.maps.LatLng(myLatLng)
+	},
+	mapElement = document.getElementById('contact-us-map'),
+	map = new google.maps.Map(mapElement, mapOptions);
+
+	var marker = new google.maps.Marker({
+		position: myLatLng,
+		map: map
+	});
+}
+			{/ia_add_js}
+		</div>
+		<div class="col-md-6">
+{/if}
 <div class="slogan">
 	{lang key='contact_top_text'}
 </div>
@@ -51,3 +85,8 @@ $(function()
 		<input type="submit" class="btn btn-primary" value="{lang key='send'}">
 	</div>
 </form>
+
+{if $core.config.contact_us_show_map}
+		</div>
+	</div>
+{/if}
