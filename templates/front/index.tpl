@@ -36,7 +36,7 @@ function init() {
 	{lang key='contact_top_text'}
 </div>
 
-<form action="{$smarty.const.IA_URL}contacts/" method="post" id="contact" class="ia-form">
+<form method="post" id="contact" class="ia-form">
 	{preventCsrf}
 
 	<div class="form-group">
