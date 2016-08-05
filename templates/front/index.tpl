@@ -7,7 +7,7 @@
 
 			<div class="contact-us-map" id="contact-us-map" style="height:350px;"></div>
 
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js{if !empty($core.config.contact_us_key)}?key={$core.config.contact_us_key}{/if}"></script>
 			{ia_add_js}
 google.maps.event.addDomListener(window, 'load', init);
 

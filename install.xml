@@ -39,6 +39,11 @@
 		    type="text" 
 		    show="contact_us_show_map|1" 
 		    description="Map zoom">15</config>
+	<config group="contact_us"
+		    name="contact_us_key"
+		    type="text" 
+		    show="contact_us_show_map|1" 
+		    description="Google Maps API key">AIzaSyCZiuPhCJ4MsjhcPARMd5wFPVFtFtdOgCc</config>
 
 	<phrases>
 		<phrase category="common" key="contact_us">Contact Us</phrase>
