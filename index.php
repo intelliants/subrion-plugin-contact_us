@@ -98,6 +98,7 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType())
 			$messages = array(iaLanguage::get('message_sent'));
 		}
 
+		$error || $_POST = array();
 		$iaView->setMessages($messages, $error ? iaView::ERROR : iaView::SUCCESS);
 	}
 

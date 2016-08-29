@@ -60,7 +60,9 @@ function init() {
 			<select class="form-control" name="subject" id="contact-subject">
 				<option>{lang key='_select_'}</option>
 				{foreach $subjects as $subject}
-					<option value="{lang key=$subject default=$subject}">{lang key=$subject default=$subject}</option>
+					{$subjectPhrase = "{lang key=$subject default=$subject}"}
+					<option value="{lang key=$subject default=$subject}" {if isset($smarty.post.subject) &&
+					$subjectPhrase == $smarty.post.subject} selected{/if}>{lang key=$subject default=$subject}</option>
 				{/foreach}
 			</select>
 		</div>
