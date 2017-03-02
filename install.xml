@@ -4,9 +4,9 @@
 	<summary>This plugin makes users able to contact site administrator using a special form.</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>4.0.0</version>
-	<date>2015-11-3</date>
-	<compatibility>4.0</compatibility>
+	<version>4.1.0</version>
+	<date>2017-03-02</date>
+	<compatibility>4.1</compatibility>
 
 	<pages>
 		<page menus="bottom" url="contacts/" name="contact_us" readonly="0">Contact Us</page>
