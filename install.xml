@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin name="contact_us">
+<module type="plugin" name="contact_us">
 	<title>Contact Us</title>
 	<summary>This plugin makes users able to contact site administrator using a special form.</summary>
 	<author>Intelliants LLC</author>
@@ -77,6 +77,6 @@ CREATE TABLE `{prefix}contacts` (
 			<![CDATA[
 DROP TABLE IF EXISTS `{prefix}contacts`;
 			]]>
-		</sql>>
+		</sql>
 	</uninstall>
-</plugin>
+</module>
