@@ -5,7 +5,7 @@
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
 	<version>4.1.0</version>
-	<date>2017-03-02</date>
+	<date>2017-03-06</date>
 	<compatibility>4.1</compatibility>
 
 	<pages>
@@ -51,7 +51,6 @@ NY 10016, United States<br>
 		<phrase category="frontend" key="phone">Phone</phrase>
 
 		<phrase category="tooltip" key="contact_us_subjects">Start every subject with a new line. Subject should be represented by a phrase key existed in your language pack. If any phrase does not exist in the pack the input will be displayed as it is.</phrase>
-
 	</phrases>
 
 	<install>

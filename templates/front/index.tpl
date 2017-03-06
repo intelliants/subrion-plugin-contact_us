@@ -80,7 +80,7 @@ $(function()
 		{/ia_add_js}
 		{ia_print_js files='jquery/plugins/jquery.textcounter'}
 	</div>
-	
+
 	{include file='captcha.tpl'}
 
 	<div class="form-actions">
