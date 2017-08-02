@@ -110,8 +110,8 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType())
 
 				$iaMailer->AddAddress($email_to_send);
 
-				$iaMailer->Subject = $data['subject'];
-				$iaMailer->Body = $data['body'];
+				$iaMailer->setSubject($data['subject']);
+				$iaMailer->setBody($data['body']);
 
 				$iaMailer->Send();
 			}
