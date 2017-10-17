@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <module type="plugin" name="contact_us">
-	<title>Contact Us</title>
-	<summary>This plugin makes users able to contact site administrator using a special form.</summary>
-	<author>Intelliants LLC</author>
-	<contributor>Intelliants LLC</contributor>
-	<version>4.1.2</version>
-	<date>2017-03-07</date>
-	<compatibility>4.1.5</compatibility>
+    <title>Contact Us</title>
+    <summary>This plugin makes users able to contact site administrator using a special form.</summary>
+    <author>Intelliants LLC</author>
+    <contributor>Intelliants LLC</contributor>
+    <version>4.1.2</version>
+    <date>2017-03-07</date>
+    <compatibility>4.1.5</compatibility>
 
-	<pages>
-		<page menus="bottom" url="contacts/" name="contact_us" readonly="0">Contact Us</page>
-	</pages>
+    <pages>
+        <page menus="bottom" url="contacts/" name="contact_us" readonly="0">Contact Us</page>
+    </pages>
 
-	<configgroup name="contact_us">Contact Us</configgroup>
-	<config group="contact_us" name="contact_us_plugin" type="divider" value="General">General</config>
-	<config group="contact_us" name="contact_notif" values="No,Email" type="select" description="Notification type">Email</config>
-	<config group="contact_us" name="contact_us_email" type="text" description="Email address" show="contact_notif|Email"><![CDATA[]]></config>
-	<config group="contact_us" name="contact_us_subjects" type="textarea" description="List of subjects"><![CDATA[]]></config>
+    <configgroup name="contact_us">Contact Us</configgroup>
+    <config group="contact_us" name="contact_us_plugin" type="divider" value="General">General</config>
+    <config group="contact_us" name="contact_notif" values="No,Email" type="select" description="Notification type">Email</config>
+    <config group="contact_us" name="contact_us_email" type="text" description="Email address" show="contact_notif|Email"><![CDATA[]]></config>
+    <config group="contact_us" name="contact_us_subjects" type="textarea" description="List of subjects"><![CDATA[]]></config>
 
-	<config group="contact_us" name="contact_us_map" type="divider" value="Google map">Google map</config>
-	<config group="contact_us" name="contact_us_show_map" type="radio" values="1,0" description="Show map">1</config>
-	<config group="contact_us" name="contact_us_lat" type="text" show="contact_us_show_map|1" description="Latitude">40.6770394</config>
-	<config group="contact_us" name="contact_us_lng" type="text" show="contact_us_show_map|1" description="Longitude">-73.9466995</config>
-	<config group="contact_us" name="contact_us_zoom" type="text" show="contact_us_show_map|1" description="Map zoom">15</config>
-	<config group="contact_us" name="contact_us_key" type="text" show="contact_us_show_map|1" description="Google Maps API key">AIzaSyCZiuPhCJ4MsjhcPARMd5wFPVFtFtdOgCc</config>
+    <config group="contact_us" name="contact_us_map" type="divider" value="Google map">Google map</config>
+    <config group="contact_us" name="contact_us_show_map" type="radio" values="1,0" description="Show map">1</config>
+    <config group="contact_us" name="contact_us_lat" type="text" show="contact_us_show_map|1" description="Latitude">40.6770394</config>
+    <config group="contact_us" name="contact_us_lng" type="text" show="contact_us_show_map|1" description="Longitude">-73.9466995</config>
+    <config group="contact_us" name="contact_us_zoom" type="text" show="contact_us_show_map|1" description="Map zoom">15</config>
+    <config group="contact_us" name="contact_us_key" type="text" show="contact_us_show_map|1" description="Google Maps API key">AIzaSyCZiuPhCJ4MsjhcPARMd5wFPVFtFtdOgCc</config>
 
-	<position default_access="1" pages="contact_us" access="0">verytop</position>
-	<position default_access="1" pages="contact_us" access="0">left</position>
+    <position default_access="1" pages="contact_us" access="0">verytop</position>
+    <position default_access="1" pages="contact_us" access="0">left</position>
 
-	<phrases>
-		<phrase category="common" key="contact_us">Contact Us</phrase>
+    <phrases>
+        <phrase category="common" key="contact_us">Contact Us</phrase>
 
-		<phrase category="frontend" key="contact_body_len">Body length must be :num chars.</phrase>
-		<phrase category="frontend" key="contact_request_from">Contact request from</phrase>
-		<phrase category="frontend" key="contact_reason">Contact Reason</phrase>
-		<phrase category="frontend" key="contact_top_text">
-			<![CDATA[
+        <phrase category="frontend" key="contact_body_len">Body length must be :num chars.</phrase>
+        <phrase category="frontend" key="contact_request_from">Contact request from</phrase>
+        <phrase category="frontend" key="contact_reason">Contact Reason</phrase>
+        <phrase category="frontend" key="contact_top_text">
+            <![CDATA[
 <p>To edit this text go to:</p> <p><b>Admin Dashboard → System  → Languages → Edit phrases</b></p> <p>and search by key: <i>contact_top_text</i>.</p>
-			]]>
-		</phrase>
-		<phrase category="frontend" key="contact_us_address">
-			<![CDATA[
+            ]]>
+        </phrase>
+        <phrase category="frontend" key="contact_us_address">
+            <![CDATA[
 <p>To change address, go to:</p> <p><b>Admin Dashboard → System  → Languages → Edit phrases</b></p> <p>and search by key: <i>contact_us_address</i>.</p>
 <p>
 <b>Company Title</b><br>
@@ -48,37 +48,37 @@
 NY 10016, United States<br>
 +1 212-725-9469
 </p>
-			]]>
-		</phrase>
-		<phrase category="frontend" key="message_sent">Message sent. Thank you!</phrase>
-		<phrase category="frontend" key="phone">Phone</phrase>
+            ]]>
+        </phrase>
+        <phrase category="frontend" key="message_sent">Message sent. Thank you!</phrase>
+        <phrase category="frontend" key="phone">Phone</phrase>
 
-		<phrase category="tooltip" key="contact_us_subjects">Start every subject with a new line. Subject should be represented by a phrase key existed in your language pack. If any phrase does not exist in the pack the input will be displayed as it is.</phrase>
-	</phrases>
+        <phrase category="tooltip" key="contact_us_subjects">Start every subject with a new line. Subject should be represented by a phrase key existed in your language pack. If any phrase does not exist in the pack the input will be displayed as it is.</phrase>
+    </phrases>
 
-	<install>
-		<sql>
-			<![CDATA[
+    <install>
+        <sql>
+            <![CDATA[
 CREATE TABLE `{prefix}contacts` (
-	`id` mediumint(8) unsigned NOT NULL auto_increment,
-	`fullname` varchar(50) NOT NULL,
-	`email` varchar(100) NOT NULL,
-	`subject` varchar(255) NOT NULL,
-	`phone` varchar(100) NOT NULL,
-	`body` text NOT NULL,
-	`date` datetime NOT NULL,
-	`ip` bigint(12) NOT NULL,
-	PRIMARY KEY (`id`)
+    `id` mediumint(8) unsigned NOT NULL auto_increment,
+    `fullname` varchar(50) NOT NULL,
+    `email` varchar(100) NOT NULL,
+    `subject` varchar(255) NOT NULL,
+    `phone` varchar(100) NOT NULL,
+    `body` text NOT NULL,
+    `date` datetime NOT NULL,
+    `ip` bigint(12) NOT NULL,
+    PRIMARY KEY (`id`)
 ) {mysql_version};
-			]]>
-		</sql>
-	</install>
+            ]]>
+        </sql>
+    </install>
 
-	<uninstall>
-		<sql>
-			<![CDATA[
+    <uninstall>
+        <sql>
+            <![CDATA[
 DROP TABLE IF EXISTS `{prefix}contacts`;
-			]]>
-		</sql>
-	</uninstall>
+            ]]>
+        </sql>
+    </uninstall>
 </module>
