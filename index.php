@@ -48,11 +48,11 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType()) {
         $email_to_send = $iaCore->get('site_email');
 
         $data = [];
-        $data['fullname'] = iaSanitize::html($_POST['name']);
+        $data['fullname'] = iaUtil::checkPostParam('name');
         $data['email'] = iaUtil::checkPostParam('email');
         $data['phone'] = iaUtil::checkPostParam('phone');
         $data['subject'] = isset($_POST['subject']) && $_POST['subject'] ? $_POST['subject'] : iaLanguage::get('contact_request_from') . ' ' . $iaCore->get('site');
-        $data['body'] = preg_replace('[\r\n]', '', nl2br(iaSanitize::html($_POST['msg'])));
+        $data['body'] = preg_replace('[\r\n]', '', nl2br(iaUtil::checkPostParam('msg')));
         $data['ip'] = iaUtil::getIp();
         $body_len = utf8_strlen($data['body']);
 
@@ -91,9 +91,9 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType()) {
                     $email_to_send = $iaCore->get('contact_us_email');
                 }
 
-                $data['body'] .= '<br><br>' . $data['fullname'] . '<br>'
-                    . $data['email'] . '<br>'
-                    . $data['phone'];
+                $data['body'] .= '<br><br>' . iaSanitize::html($data['fullname']) . '<br>'
+                    . iaSanitize::html($data['email']) . '<br>'
+                    . iaSanitize::html($data['phone']);
 
                 $iaMailer->AddAddress($email_to_send);
 
